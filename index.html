@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .option {
+            margin: 10px 0;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Khánh's Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Biệt danh trên sân bóng là gì?</p>
+                <ul class="options">
+                    <li class="option"><input type="radio" name="q1" value="A"> A. Khánh tia chớp</li>
+                    <li class="option"><input type="radio" name="q1" value="B"> B. Khánh cris</li>
+                    <li class="option"><input type="radio" name="q1" value="C"> C. Khánh CR7</li>
+                    <li class="option"><input type="radio" name="q1" value="D"> D. Khánh JR</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p>2. Khánh có đam mê với gì nhất?</p>
+                <ul class="options">
+                    <li class="option"><input type="radio" name="q2" value="A"> A. Skate</li>
+                    <li class="option"><input type="radio" name="q2" value="B"> B. Chess China</li>
+                    <li class="option"><input type="radio" name="q2" value="C"> C. Game</li>
+                    <li class="option"><input type="radio" name="q2" value="D"> D. Quynh</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p>3. Khánh nặng bao nhiêu KG?</p>
+                <ul class="options">
+                    <li class="option"><input type="radio" name="q3" value="A"> A. 60</li>
+                    <li class="option"><input type="radio" name="q3" value="B"> B. 61</li>
+                    <li class="option"><input type="radio" name="q3" value="C"> C. 62</li>
+                    <li class="option"><input type="radio" name="q3" value="D"> D. 63</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p>4. Trong tình yêu, điều gì quan trọng nhất với Khánh?</p>
+                <ul class="options">
+                    <li class="option"><input type="radio" name="q4" value="A"> A. Chung Tình</li>
+                    <li class="option"><input type="radio" name="q4" value="B"> B. Nhan sắc</li>
+                    <li class="option"><input type="radio" name="q4" value="C"> C. Sự tôn trọng và ngoan</li>
+                    <li class="option"><input type="radio" name="q4" value="D"> D. Phải là Q</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <p>5. Kỉ niệm đáng nhớ nhất thời học quân sự của Khánh là gì?</p>
+                <ul class="options">
+                    <li class="option"><input type="radio" name="q5" value="A"> A. Sinh nhật</li>
+                    <li class="option"><input type="radio" name="q5" value="B"> B. Bắn Súng</li>
+                    <li class="option"><input type="radio" name="q5" value="C"> C. Đá bóng</li>
+                    <li class="option"><input type="radio" name="q5" value="D"> D. Gái gú</li>
+                </ul>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Count correct answers
+            let score = 0;
+            const correctAnswers = ['A', 'D', 'C', 'D', 'B'];
+
+            for (let i = 1; i <= 5; i++) {
+                const selectedAnswer = document.querySelector('input[name="q' + i + '"]:checked');
+
+                if (selectedAnswer) {
+                    const userAnswer = selectedAnswer.value;
+
+                    if (userAnswer === correctAnswers[i - 1]) {
+                        score++;
+                    }
+                }
+            }
+
+            // Display result
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Your score: ' + score + '/5';
+        });
+    </script>
+</body>
+</html>
